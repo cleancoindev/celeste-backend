@@ -45,12 +45,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: .github/scripts/kubectl-config.sh ${{secrets.KUBE_CA}} ${{secrets.KUBE_SERVER}} ${{secrets.KUBE_TOKEN}}
-    - run: .github/scripts/kubectl-set-image.sh court-backend-rinkeby $REPO:${GITHUB_SHA}
-    - run: .github/scripts/kubectl-set-image.sh court-backend-staging $REPO:${GITHUB_SHA}
-    - run: .github/scripts/kubectl-set-image.sh court-backend-ropsten $REPO:${GITHUB_SHA}
-    - run: .github/scripts/kubectl-wait-ready.sh court-backend-rinkeby
-    - run: .github/scripts/kubectl-wait-ready.sh court-backend-staging
-    - run: .github/scripts/kubectl-wait-ready.sh court-backend-ropsten
+    - run: .github/scripts/kubectl-set-image.sh celeste-backend-rinkeby $REPO:${GITHUB_SHA}
+    - run: .github/scripts/kubectl-set-image.sh celeste-backend-staging $REPO:${GITHUB_SHA}
+    - run: .github/scripts/kubectl-set-image.sh celeste-backend-ropsten $REPO:${GITHUB_SHA}
+    - run: .github/scripts/kubectl-wait-ready.sh celeste-backend-rinkeby
+    - run: .github/scripts/kubectl-wait-ready.sh celeste-backend-staging
+    - run: .github/scripts/kubectl-wait-ready.sh celeste-backend-ropsten
     # wait 10 sec for k8s to reroute ingress and check app endpoint
     - run: sleep 10 && curl --fail https://court-app-rinkeby.backend.aragon.org
     - run: curl --fail https://court-app-staging.backend.aragon.org
