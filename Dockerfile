@@ -1,4 +1,4 @@
-FROM node:12.14.0-alpine
+FROM node:12.22.12-alpine
 RUN apk add --no-cache git
 
 WORKDIR /court-backend
